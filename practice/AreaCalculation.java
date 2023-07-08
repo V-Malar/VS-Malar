@@ -31,6 +31,11 @@ public class AreaCalculation {
 		boolean set = true;
 		while (set)
 		{
+	        System.out.println("Square");
+                System.out.println("Rectangle");
+                System.out.println("Triangle");
+                System.out.println("Circle");
+                System.out.println("Exit");
 		System.out.println("Enter Choice");
 		String a = sc.nextLine();
 		switch(a)
