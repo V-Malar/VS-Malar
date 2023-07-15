@@ -13,7 +13,7 @@ public class Lab10 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Integer a = 5, b;
-		Integer[] arr = new Integer[6];
+		Integer[] arr = new Integer[a];
 		Scanner sc = new Scanner(System.in);
 		try {
 			b = 0 / arr.length;
