@@ -11,7 +11,7 @@ public class Closed17b {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Closed13 c = new Closed13();
+		Closed17b c = new Closed17b();
 		c.display();
 	}
 }
