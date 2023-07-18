@@ -2,10 +2,16 @@ package test;
 
 public class Closed15a {
 	static void prime() {
-		for (int i = 2; i <= 100; i++) {
-			if ((i == 2) || (i % 2 == 1)) {
-				System.out.println(i);
+		int i = 1;
+		while (i <= 100) {
+			if (i == 1) {
+
+			} else {
+				if (i == 2 || i % 2 == 1) {
+					System.out.println(i);
+				}
 			}
+			i++;
 		}
 	}
 
