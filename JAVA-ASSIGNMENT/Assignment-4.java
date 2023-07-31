@@ -4,18 +4,16 @@ import java.util.Scanner;
 
 class Rahul {
 	Scanner sc = new Scanner(System.in);
-	Integer input, num, temp;
+	Integer input, num, temp, last, sum = 0, pow;
 
 	public String armstrong() {
 		System.out.println("Enter your number: ");
 		input = sc.nextInt();
-		int num, temp;
 		num = temp = input;
-		int last, sum = 0;
-		int pow = input % 10;
+		pow = input % 10;
 		while (temp > 0) {
 			last = temp % 10;
-			sum += Math.pow(last, pow);
+			sum = (int) (sum + Math.pow(last, pow));
 			temp = temp / 10;
 		}
 		if (sum == num) {
