@@ -52,11 +52,15 @@ public class TopSecret {
 		 */
 
 		// Basic Details - public constructor, public method
-		Class<Secret> shinchan = Secret.class;
-		Constructor<Secret> shinchan_constructor1 = shinchan.getConstructor(String.class, Integer.class);
-		Secret basicValues = (Secret) shinchan_constructor1.newInstance("Shinchan", 5);
-		Method m1 = shinchan.getMethod("basicDetails");
-		m1.invoke(basicValues);
+		// Class<Secret> shinchan = Secret.class;
+		// Constructor<Secret> shinchan_constructor1 = shinchan.getConstructor(String.class, Integer.class);
+		// Secret basicValues = (Secret) shinchan_constructor1.newInstance("Shinchan", 5);
+		// Method m1 = shinchan.getMethod("basicDetails");
+		// m1.invoke(basicValues);
+		// -> (Replaced by)
+		Secret s= (Secret)Class.forName("reflections.Secret").getConstructor(String.class, Integer.class).newInstance("Shinchan", 5);
+		Method m1 = (Method)Class.forName("reflections.Secret").getMethod("basicDetails");
+		m1.invoke(s);
 
 		// secretValues.secretDetails(); --can't access because private method
 		// Secret Details - private constructor, private method
