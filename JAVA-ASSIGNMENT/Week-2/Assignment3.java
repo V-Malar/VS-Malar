@@ -26,7 +26,7 @@ class Question {
 	}
 }
 
-public class Assignment1 {
+public class Assignment3 {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		// TODO Auto-generated method stub
