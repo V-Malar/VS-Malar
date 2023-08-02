@@ -8,8 +8,9 @@ class UpdateCorona {
 	public int age = 5;
 }
 
-class NewCorona extends UpdateCorona {
+class NewCorona extends UpdateCorona{
 	public String name = "Shinchan";
+//	public int age = 5;
 
 	public int getAge() {
 		return this.age;
@@ -66,6 +67,7 @@ public class Work {
 			Class<?> superClass = clazz.getSuperclass();
 			if (superClass != null && !superClass.equals(Object.class)) {
 				getter = findGetter(superClass, propertyName);
+				// System.out.println("Empty..a"); for recursion to superclass the above line is used..
 			}
 		}
 		return getter;
@@ -74,6 +76,8 @@ public class Work {
 	public static void main(String[] args) throws NoSuchFieldException, SecurityException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, InstantiationException {
 		Scanner sc = new Scanner(System.in);
+//		Corona c = new Corona();
+//		c.getAge();
 		System.out.println("Enter properties like name, age, diseaseName, infectious, c, s --");
 		String propertyName = sc.next();
 
