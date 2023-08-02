@@ -52,7 +52,6 @@ public class Work {
 			throws NoSuchFieldException, SecurityException {
 		Method getter = null;
 		String capitalizedPropertyName = propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
-		// propertyName.startsWith("is") && propertyName.length() <2
 		String getterName = "";
 		if (clazz.getField(propertyName).getType() == boolean.class) {
 			getterName = "is" + capitalizedPropertyName;
