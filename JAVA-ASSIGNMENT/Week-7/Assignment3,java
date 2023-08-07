@@ -1,0 +1,26 @@
+package Week;
+
+import java.util.Scanner;
+
+class Assignment3 {
+	static void changeChar() {
+		try {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the text: ");
+			String s = sc.next();
+			byte[] str_b = s.getBytes();
+			char c = 'a';
+			byte c_b = (byte) c;
+			System.out.println("Enter the index number: ");
+			int n = sc.nextInt();
+			str_b[n] = c_b;
+			System.out.println(new String(str_b));
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+
+	public static void main(String[] args) {
+		changeChar();
+	}
+}
