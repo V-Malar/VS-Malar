@@ -26,6 +26,10 @@ public class Work {
 // Class GENERICS
 package Week;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 class Shinchano {
 	String name;
 
@@ -91,6 +95,14 @@ public class Work {
 		System.out.println(neni.getValue());
 		BasicGenerics<Shiro> shiro = new BasicGenerics("Pet");
 		System.out.println(shiro.getValue());
-	}
 
+		ArrayList<Object> a = new ArrayList();
+		a.add(shinchan.getValue());
+		a.add(kazama.getValue());
+		a.add(masaw.getValue());
+		a.add(shiro.getValue());
+		a.add(neni.getValue());
+		
+		System.out.println(a);
+	}
 }
