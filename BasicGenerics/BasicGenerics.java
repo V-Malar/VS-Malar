@@ -113,46 +113,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class Shinchano {
-	String name;
-
-	public Shinchano(String name) {
-		this.name = name;
-	}
-}
-
-class Kazama {
-	Integer age;
-
-	public Kazama(Integer age) {
-		this.age = age;
-	}
-}
-
-class Masaw {
-	Character initial;
-
-	public Masaw(Character initial) {
-		this.initial = initial;
-	}
-}
-
-class Neni {
-	Boolean isFriend;
-
-	public Neni(Boolean isFriend) {
-		this.isFriend = isFriend;
-	}
-}
-
-class Shiro {
-	String type;
-
-	public Shiro(String type) {
-		this.type = type;
-	}
-}
-
 class BasicGenerics<T> {
 	T[] things;
 
