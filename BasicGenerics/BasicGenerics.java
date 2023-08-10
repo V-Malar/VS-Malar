@@ -106,3 +106,71 @@ public class Work {
 		System.out.println(a);
 	}
 }
+// OWN TRY -- USING VARARGS
+package Week;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+class Shinchano {
+	String name;
+
+	public Shinchano(String name) {
+		this.name = name;
+	}
+}
+
+class Kazama {
+	Integer age;
+
+	public Kazama(Integer age) {
+		this.age = age;
+	}
+}
+
+class Masaw {
+	Character initial;
+
+	public Masaw(Character initial) {
+		this.initial = initial;
+	}
+}
+
+class Neni {
+	Boolean isFriend;
+
+	public Neni(Boolean isFriend) {
+		this.isFriend = isFriend;
+	}
+}
+
+class Shiro {
+	String type;
+
+	public Shiro(String type) {
+		this.type = type;
+	}
+}
+
+class BasicGenerics<T> {
+	T[] things;
+
+	public BasicGenerics(T... things) {
+		this.things = things;
+	}
+
+	public void getValue() {
+		for (T t : things) {
+			System.out.println(t);
+		}
+	}
+}
+
+public class Work {
+
+	public static void main(String[] args) {
+		BasicGenerics<Object> bg = new BasicGenerics("Shinchan", 5, "Naughty kid", "Fun maker", true);
+		bg.getValue();
+	}
+}
