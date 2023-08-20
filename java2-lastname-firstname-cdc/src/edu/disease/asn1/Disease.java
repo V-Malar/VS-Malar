@@ -26,8 +26,4 @@ public class Disease {
 		return "\nName: " + getName() + " Disease-ID: "+ diseaseId.hashCode();
 		
 	}
-//	public static void main(String args[])
-//	{
-//		Patient p = new Patient(-4, -5);
-//	}
 }
