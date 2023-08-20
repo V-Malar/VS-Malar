@@ -2,23 +2,29 @@ package Week;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
 interface DiseaseControlManager {
 
 	Disease addDisease(String name, boolean infectious);
+	// Adds a new disease to a application
 
 	Disease getDisease(UUID diseaseId);
+	// Returns the disease or null if not found
 
 	Patient addPatient(String firstName, String lastName, int maxDiseases, int maxExposures);
+	// Adds a new patient to the application. Supply the max parameters to the
+	// Patient constructor
 
 	Patient getPatient(UUID patientId);
+	// Returns the patient or null if not found
 
 	void addDiseaseToPatient(UUID patientId, UUID diseaseId);
+	// Adds a disease to a patient
 
 	void addExposureToPatient(UUID patientId, Exposure exposure);
+	// Adds an Exposure instance to a patient
 }
 
 public class DiseaseControlManagerImpl implements DiseaseControlManager {
@@ -135,7 +141,6 @@ public class DiseaseControlManagerImpl implements DiseaseControlManager {
 
 		patient.addExposure(exposure);
 	}
-
 }
 
 class Exposure {
@@ -143,14 +148,21 @@ class Exposure {
 	LocalDateTime dateTime;
 	UUID patientId;
 
-	public Exposure(String exposureType, LocalDateTime dateTime, UUID patientId) {
+	public Exposure(String exposureType, LocalDateTime dateTime) {
 		if (!Pattern.matches("[DI]", exposureType)) {
 			throw new IllegalArgumentException("Value must be either D or I");
 		} else {
 			this.exposureType = exposureType;
 		}
 		this.dateTime = dateTime;
+	}
+
+	public void setPatientId(UUID patientId) {
 		this.patientId = patientId;
+	}
+
+	public UUID getPatientId() {
+		return patientId;
 	}
 
 	public void setExposure(String exposureType) {
@@ -162,150 +174,145 @@ class Exposure {
 	}
 
 	public String toString() {
-		// PatientID: 123e4567-e89b-12d3-a456-426655440000 Exposure Type: I Date and
-		// Time: " + dateTime
-		return "PatientID: " + patientId.hashCode() + " Exposure Type: " + getExposure() + " Date and Time: "
-				+ dateTime;
+		return "PatientID: " + getPatientId().hashCode() + " Exposure Type: " + getExposure() + " Date and Time: "
+				+ dateTime + "\n";
 	}
 }
 
 abstract class Disease {
 
-    UUID diseaseId;
-    String name;
+	UUID diseaseId;
+	String name;
 
-    abstract String[] getExamples();
+	abstract String[] getExamples();
 
-    void setName(String name) {
-        this.name = name;
-    }
+	void setName(String name) {
+		this.name = name;
+	}
 
-    String getName() {
-        return name;
-    }
+	String getName() {
+		return name;
+	}
 
-    void setDiseaseId(UUID id) {
-        this.diseaseId = id;
-    }
+	void setDiseaseId(UUID id) {
+		this.diseaseId = id;
+	}
 
-    UUID getDiseaseId() {
-        return diseaseId;
-    }
+	UUID getDiseaseId() {
+		return diseaseId;
+	}
 
-    public String toString() {
-        return "\nName: " + getName() + " Disease-ID: " + diseaseId.hashCode();
-    }
+	public String toString() {
+		return "\nName: " + getName() + " Disease-ID: " + getDiseaseId().hashCode();
+	}
 }
 
 class InfectiousDisease extends Disease {
 
-    @Override
-    String[] getExamples() {
-        return new String[]{"Influenza", "COVID-19", "Malaria", "Tuberculosis"};
-    }
+	@Override
+	String[] getExamples() {
+		return new String[] { "Influenza", "COVID-19", "Malaria", "Tuberculosis" };
+	}
 }
 
 class NonInfectiousDisease extends Disease {
 
-    @Override
-    String[] getExamples() {
-        return new String[]{"Diabetes", "Cancer", "Heart Disease", "Asthma"};
-    }
+	@Override
+	String[] getExamples() {
+		return new String[] { "Diabetes", "Cancer", "Heart Disease", "Asthma" };
+	}
 }
 
 class Patient {
 
-    private UUID patientId;
-    private String firstName;
-    private String lastName;
-    private Exposure[] exposures;
-    private UUID[] diseaseIds;
+	private UUID patientId;
+	private String firstName;
+	private String lastName;
+	private Exposure[] exposures;
+	private UUID[] diseaseIds;
 
-    public Patient(String firstName, String lastName, int maxDiseases, int maxExposures) {
-        if (maxDiseases <= 0 || maxExposures <= 0) {
-            throw new IllegalArgumentException("Max diseases and max exposures must be greater than 0.");
-        }
-        diseaseIds = new UUID[maxDiseases];
-        exposures = new Exposure[maxExposures];
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-public String getFirstName()
-{
-	return firstName;
-}
-    public void addDiseaseId(UUID diseaseId) {
-        for (int i = 0; i < diseaseIds.length; i++) {
-            if (diseaseIds[i] == null) {
-                diseaseIds[i] = diseaseId;
-                return;
-            }
-        }
-        throw new IndexOutOfBoundsException("Disease IDs array is full.");
-    }
+	public Patient(String firstName, String lastName, int maxDiseases, int maxExposures) {
+		if (maxDiseases <= 0 || maxExposures <= 0) {
+			throw new IllegalArgumentException("Max diseases and max exposures must be greater than 0.");
+		}
+		diseaseIds = new UUID[maxDiseases];
+		exposures = new Exposure[maxExposures];
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
-    public void addExposure(Exposure exposure) {
-        for (int i = 0; i < exposures.length; i++) {
-            if (exposures[i] == null) {
-                exposures[i] = exposure;
-                return;
-            }
-        }
-        throw new IndexOutOfBoundsException("Exposures array is full.");
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public UUID getPatientId() {
-        return patientId;
-    }
+	public void addDiseaseId(UUID diseaseId) {
+		for (int i = 0; i < diseaseIds.length; i++) {
+			if (diseaseIds[i] == null) {
+				diseaseIds[i] = diseaseId;
+				return;
+			}
+		}
+		throw new IndexOutOfBoundsException("Disease IDs array is full.");
+	}
 
-    public void setPatientId(UUID patientId) {
-        this.patientId = patientId;
-    }
+	public void addExposure(Exposure exposure) {
+		for (int i = 0; i < exposures.length; i++) {
+			if (exposures[i] == null) {
+				exposures[i] = exposure;
+				return;
+			}
+		}
+		throw new IndexOutOfBoundsException("Exposures array is full.");
+	}
 
+	public UUID getPatientId() {
+		return patientId;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public void setPatientId(UUID patientId) {
+		this.patientId = patientId;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public Exposure[] getExposures() {
-        return exposures;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public UUID[] getDiseaseIds() {
-        return diseaseIds;
-    }
+	public Exposure[] getExposures() {
+		return exposures;
+	}
 
-    @Override
-    public int hashCode() {
-        return patientId.hashCode();
-    }
+	public UUID[] getDiseaseIds() {
+		return diseaseIds;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Patient patient = (Patient) obj;
-        return patientId.equals(patient.patientId);
-    }
+	@Override
+	public int hashCode() {
+		return patientId.hashCode();
+	}
 
-    @Override
-    public String toString() {
-        return "Patient{" +
-               "patientId=" + patientId +
-               ", firstName='" + firstName + '\'' +
-               ", lastName='" + lastName + '\'' +
-               '}';
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		Patient patient = (Patient) obj;
+		return patientId.equals(patient.patientId);
+	}
+
+	@Override
+	public String toString() {
+		return "Patient{" + "patientId=" + patientId.hashCode() + ", firstName='" + firstName + '\'' + ", lastName='"
+				+ lastName + '\'' + '}' + "\n";
+	}
 }
