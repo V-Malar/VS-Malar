@@ -1,10 +1,12 @@
-package Week;
+package edu.disease.asn2;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+/**
+ * The DiseaseControlManager interface defines methods for managing diseases and patients in an application.
+ */
 interface DiseaseControlManager {
 
 	Disease addDisease(String name, boolean infectious);
@@ -26,8 +28,11 @@ interface DiseaseControlManager {
 	void addExposureToPatient(UUID patientId, Exposure exposure);
 	// Adds an Exposure instance to a patient
 }
-
-public class DiseaseControlManagerImpl implements DiseaseControlManager {
+/**
+ * The DiseaseControlManagerImpl class implements the DiseaseControlManager interface and provides
+ * the functionality to manage diseases and patients.
+ */
+class DiseaseControlManagerImpl implements DiseaseControlManager {
 
 	private Disease[] diseases;
 	private Patient[] patients;
@@ -142,7 +147,9 @@ public class DiseaseControlManagerImpl implements DiseaseControlManager {
 		patient.addExposure(exposure);
 	}
 }
-
+/**
+ * The Exposure class represents an exposure with an exposure type, date and time, and patient ID.
+ */
 class Exposure {
 	String exposureType;
 	LocalDateTime dateTime;
@@ -178,7 +185,9 @@ class Exposure {
 				+ dateTime + "\n";
 	}
 }
-
+/**
+ * The abstract Disease class represents a disease with a disease ID and name.
+ */
 abstract class Disease {
 
 	UUID diseaseId;
@@ -206,7 +215,9 @@ abstract class Disease {
 		return "\nName: " + getName() + " Disease-ID: " + getDiseaseId().hashCode();
 	}
 }
-
+/**
+ * The InfectiousDisease class is a subclass of Disease and provides examples of infectious diseases.
+ */
 class InfectiousDisease extends Disease {
 
 	@Override
@@ -214,7 +225,9 @@ class InfectiousDisease extends Disease {
 		return new String[] { "Influenza", "COVID-19", "Malaria", "Tuberculosis" };
 	}
 }
-
+/**
+ * The NonInfectiousDisease class is a subclass of Disease and provides examples of non-infectious diseases.
+ */
 class NonInfectiousDisease extends Disease {
 
 	@Override
@@ -222,7 +235,9 @@ class NonInfectiousDisease extends Disease {
 		return new String[] { "Diabetes", "Cancer", "Heart Disease", "Asthma" };
 	}
 }
-
+/**
+ * The Patient class represents a patient with patient ID, name, diseases, and exposures.
+ */
 class Patient {
 
 	private UUID patientId;
