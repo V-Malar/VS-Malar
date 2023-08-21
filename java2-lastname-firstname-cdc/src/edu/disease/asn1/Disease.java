@@ -1,3 +1,5 @@
+package edu.disease.asn1;
+import java.util.UUID;
 /**
  * The Disease class represents a disease with a unique disease ID and a name.
  */
