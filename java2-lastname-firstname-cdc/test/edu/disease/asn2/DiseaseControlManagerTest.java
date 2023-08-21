@@ -54,31 +54,18 @@ public class DiseaseControlManagerTest {
 		Exposure exposure2 = new Exposure("I", LocalDateTime.now().minusDays(1));
 		exposure2.setPatientId(patient2.getPatientId());
 
-//		ArrayList<Exposure> eList = new ArrayList<>();
-//		eList.add(exposure1);
-//		eList.add(exposure2);
-//		System.out.println("Exposure Information:");
-//		System.out.println(eList);
-
-		patient1.addExposure(exposure1);
-		patient1.addExposure(exposure2);
-		patient2.addExposure(exposure2);
-		patient2.addExposure(exposure1);
+		ArrayList<String> dList = new ArrayList<>();
+		dList.add(covid19 + ", " + exposure1);
+		dList.add(diabetes + "," + exposure2);
+		System.out.println("Disease Manager Information:");
+		System.out.println(dList);
 
 		ArrayList<Patient> pList = new ArrayList<>();
 		pList.add(patient1);
 		pList.add(patient2);
 		pList.add(patient3);
-
 		System.out.println("Patient Information:");
 		System.out.println(pList);
-
-		Disease retrievedCovid19 = diseaseControlManager.getDisease(covid19.getDiseaseId());
-		Disease retrievedDiabetes = diseaseControlManager.getDisease(diabetes.getDiseaseId());
-
-		System.out.println("\nDisease Information:");
-		System.out.println(retrievedCovid19 + " " + patient1.getFirstName() + " " + patient1.getLastName());
-		System.out.println(retrievedDiabetes + " " + patient2.getFirstName() + " " + patient2.getLastName());
 
 		assertEquals(3, pList.size());
 		assertEquals(patient1.getPatientId(), pList.get(0).getPatientId());
