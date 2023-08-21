@@ -13,26 +13,23 @@ class KeyValue {
 	}
 }
 
-class DeliveryTime {
-	// String userInput;
-//	DeliveryTime(String userInput)
-//	{
-//		this.userInput = userInput;
-//	}
+public class Delivery {
+
 	public void deliveryTime(String userInput) {
 		ArrayList<KeyValue> keyValuePairs = new ArrayList<KeyValue>();
 		LocalDateTime newDateTime;
 		long result = 0;
 		DateTimeFormatter day_formatter;
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy hh:mm:ss a");
 		LocalDateTime parsedDateTime = LocalDateTime.parse(userInput, formatter);
-		System.out.println("Parsed date and time: " + parsedDateTime + " " + parsedDateTime.format(DateTimeFormatter.ofPattern("EEEE")));
+		System.out.println("Parsed date and time: " + parsedDateTime + " "
+				+ parsedDateTime.format(DateTimeFormatter.ofPattern("EEEE")));
 
 		DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
 		DateTimeFormatter timeCheck = DateTimeFormatter.ofPattern("hh:mm:ss a");
 		LocalDateTime checkTime = LocalDateTime.parse(userInput, formatter);
-		
+
 		String formattedCheckTime = checkTime.format(timeCheck);
 
 		keyValuePairs.add(new KeyValue("DP", 2));
@@ -45,7 +42,8 @@ class DeliveryTime {
 		String dayOfWeek = newDateTime.format(day_formatter);
 		String formattedDate = newDateTime.format(outputFormatter);
 
-		if (dayOfWeek.equalsIgnoreCase("Saturday") || dayOfWeek.equalsIgnoreCase("Sunday") || formattedCheckTime.equalsIgnoreCase("11:30:00 PM")) {
+		if (dayOfWeek.equalsIgnoreCase("Saturday") || dayOfWeek.equalsIgnoreCase("Sunday")
+				|| formattedCheckTime.equalsIgnoreCase("11:30:00 PM")) {
 			System.out.println("Destination stopped..");
 		} else if (formattedDate.equalsIgnoreCase("August 15, 2023")
 				|| formattedDate.equalsIgnoreCase("January 01, 2023")) {
@@ -63,7 +61,8 @@ class DeliveryTime {
 				formattedDate = newDateTime.format(outputFormatter);
 				newDateTime = parsedDateTime.plusHours(result);
 
-				if (dayOfWeek.equalsIgnoreCase("Saturday") || dayOfWeek.equalsIgnoreCase("Sunday") || formattedCheckTime.equalsIgnoreCase("11:30:00 PM")) {
+				if (dayOfWeek.equalsIgnoreCase("Saturday") || dayOfWeek.equalsIgnoreCase("Sunday")
+						|| formattedCheckTime.equalsIgnoreCase("11:30:00 PM")) {
 					System.out.println("Current Date & Time: " + newDateTime.toString() + " Day: " + dayOfWeek);
 					System.out.println("Destination stopped..");
 				} else {
@@ -77,9 +76,6 @@ class DeliveryTime {
 
 		}
 	}
-}
-
-public class Delivery {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -87,7 +83,7 @@ public class Delivery {
 		System.out.println("Enter date and time (MMMM d, yyyy hh:mm:ss a)-August 19, 2023 11:30:00 PM");
 		String userInput = scanner.nextLine();
 		scanner.close();
-		new DeliveryTime().deliveryTime(userInput);
+		new Delivery().deliveryTime(userInput);
 //		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
 //		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEEE");
 //        DateTimeFormatter day_formatter = DateTimeFormatter.ofPattern("EEEE");
