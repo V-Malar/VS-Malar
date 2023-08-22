@@ -62,18 +62,16 @@ public class DiseaseFileRepositoryTest {
         dandp.setDiseases(new Disease[] { disease1, disease2, disease3 });
         dandp.setPatients(new Patient[] { patient1, patient2, patient3 });
         
-       // Disease[] diseaseArray = new Disease[] { disease1, disease2, disease3 };
+        Disease[] diseaseArray = dandp.getDiseases();
+        Patient[] patientArray = dandp.getPatients();
 
         ArrayList<String> dlist = new ArrayList<>();
         dlist.add(Arrays.toString(dandp.getDiseases()) + "\n\n" + Arrays.toString(dandp.getPatients()));
-
-        // Perform assertions to validate the correctness of your data
+        
         assertNotNull(dlist);
         assertEquals(1, dlist.size());
-        // Add more assertions as needed
         
-//        repository.init("D:\\CPS\\LWUG\\workspace\\java2-lastname-firstname-cdc\\src\\edu\\disease\\asn3");
-//        repository.save(new Disease[] { disease1, disease2, disease3 }, new Patient[] { patient1, patient2, patient3 });
+        DiseaseFileRepository.save(diseaseArray, patientArray);
         System.out.println(dlist);
     }
 }
