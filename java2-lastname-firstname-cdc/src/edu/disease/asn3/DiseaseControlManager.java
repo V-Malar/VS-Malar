@@ -1,5 +1,6 @@
 package src;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -154,27 +155,22 @@ class DiseaseControlManagerImpl implements DiseaseControlManager {
 
 	@Override
 	public Disease[] getDiseases() {
-		// TODO Auto-generated method stub
-		for (Disease d: diseases)
-		{
-			System.out.println(d);
-		}
 		return diseases;
 	}
 
 	@Override
 	public Patient[] getPatients() {
-		for (Disease d: diseases)
-		{
-			System.out.println(d);
-		}
 		return patients;
 	}
 }
 /**
  * The Exposure class represents an exposure with an exposure type, date and time, and patient ID.
  */
-class Exposure {
+class Exposure  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String exposureType;
 	LocalDateTime dateTime;
 	UUID patientId;
@@ -242,7 +238,12 @@ abstract class Disease {
 /**
  * The InfectiousDisease class is a subclass of Disease and provides examples of infectious diseases.
  */
-class InfectiousDisease extends Disease {
+class InfectiousDisease extends Disease  implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	String[] getExamples() {
@@ -252,7 +253,12 @@ class InfectiousDisease extends Disease {
 /**
  * The NonInfectiousDisease class is a subclass of Disease and provides examples of non-infectious diseases.
  */
-class NonInfectiousDisease extends Disease {
+class NonInfectiousDisease extends Disease implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	String[] getExamples() {
@@ -262,8 +268,12 @@ class NonInfectiousDisease extends Disease {
 /**
  * The Patient class represents a patient with patient ID, name, diseases, and exposures.
  */
-class Patient {
+class Patient  implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UUID patientId;
 	private String firstName;
 	private String lastName;
