@@ -3,7 +3,8 @@ package edu.disease.asn1;
 import java.util.UUID;
 import java.util.Arrays;
 import java.util.Objects;
-
+Evaluation by Mr. Yasin - Technical HIT
+    Your Exposure array field is missing as per the requirement, kindly modify the same and resubmit.
 /**
  * The Patient class represents a patient with a unique patient ID, first name, last name, and associated data such as
  * max diseases and max exposures.
