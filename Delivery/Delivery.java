@@ -2,7 +2,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Set destination point and next point in the ArrayList 
+ */
 class KeyValue {
 	String key;
 	int value;
@@ -12,9 +14,15 @@ class KeyValue {
 		this.value = value;
 	}
 }
-
+/**
+ * The Delivery class represents a delivery schedule calculation based on user input.
+ */
 public class Delivery {
-
+  /**
+     * Calculates the delivery time and prints relevant information.
+     *
+     * @param userInput The user-input date and time in the format "MMMM d, yyyy hh:mm:ss a".
+     */
 	public void deliveryTime(String userInput) {
 		ArrayList<KeyValue> keyValuePairs = new ArrayList<KeyValue>();
 		LocalDateTime newDateTime;
@@ -76,7 +84,11 @@ public class Delivery {
 
 		}
 	}
-
+  /**
+     * Calculates the delivery time and prints relevant information.
+     *
+     * @param userInput The user-input date and time in the format "MMMM d, yyyy hh:mm:ss a".
+     */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
