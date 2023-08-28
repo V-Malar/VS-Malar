@@ -227,21 +227,6 @@ public class Delivery {
 		String userInput = scanner.nextLine();
 		scanner.close();
 		new Delivery().deliveryTime(userInput);
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEEE");
-//        DateTimeFormatter day_formatter = DateTimeFormatter.ofPattern("EEEE");
-//        DateTimeFormatter time_formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
-//        String dayOfWeek = currentDateTime.format(day_formatter);
-//        newDateTime = currentDateTime.plusHours(26);
-//        String newdayOfWeek = newDateTime.format(day_formatter);
-//        String formattedTime = currentDateTime.format(time_formatter);
-//        String newformattedTime = newDateTime.format(time_formatter);
-//        System.out.println("Current day of the week: " + dayOfWeek + " Date: " + formattedTime);
-//		System.out.println("Current day of the week: " + newdayOfWeek + " Date: " + newformattedTime);
-//		if (!dayOfWeek.equalsIgnoreCase("Saturday"))
-//		{
-//			System.out.println("Destination reached..");
-//		}
 	}
 
 }
