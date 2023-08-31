@@ -3,7 +3,7 @@ package asn6;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import asn3.Exposure;
+import asn6.Exposure;
 /**
  * The DiseaseControlManagerImpl class implements the DiseaseControlManager interface and provides
  * the functionality to manage diseases and patients.
