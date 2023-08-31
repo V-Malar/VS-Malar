@@ -1,6 +1,6 @@
 package asn6;
 
-import asn3.Exposure;
+import asn6.Exposure;
 import java.util.ArrayList;
 import java.util.UUID;
 
