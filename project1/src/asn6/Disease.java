@@ -1,9 +1,10 @@
 package asn6;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Disease {
+public abstract class Disease {
 	UUID diseaseId;
 	String name;
 
@@ -44,4 +45,7 @@ public class Disease {
 	public String toString() {
 		return "Disease [diseaseId=" + diseaseId + ", name=" + name + "]";
 	}
-}
+
+	public abstract ArrayList<String> getExamples();
+	}
+
